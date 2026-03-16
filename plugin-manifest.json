@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "name": "bolide-detector",
+  "version": "0.1.0",
+  "description": "Bolide/fireball detection and analysis — consumes JPL Fireball API (CNEOS) and NASA GLM Bolide Service data. Detects meteorite entries via geostationary lightning mapper sensors (GLM-16/17/18, EUMETSAT LI). Outputs $BOL FlatBuffer-aligned binary with location, energy, entry velocity, brightness classification, and ground track.",
+  "author": "DigitalArsenal",
+  "license": "Apache-2.0",
+  "inputFormats": ["application/json"],
+  "outputFormats": ["$BOL"],
+  "dataSources": [
+    {
+      "name": "JPL Fireball API",
+      "url": "https://ssd-api.jpl.nasa.gov/fireball.api",
+      "type": "REST",
+      "auth": "none"
+    },
+    {
+      "name": "NASA Bolide Service",
+      "url": "https://neo-bolide.ndc.nasa.gov/service/event/public",
+      "type": "REST",
+      "auth": "none"
+    }
+  ]
+}
