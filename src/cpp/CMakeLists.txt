@@ -4,13 +4,13 @@ project(bolide_sdn_plugin CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Header-only library (types.h + parser.h)
-add_library(bolide INTERFACE)
-target_include_directories(bolide INTERFACE include)
+# Static library with physics/analysis implementations
+add_library(bolide_lib STATIC src/bolide.cpp)
+target_include_directories(bolide_lib PUBLIC include)
 
 # Test binary
 add_executable(test_bolide tests/test_bolide.cpp)
-target_link_libraries(test_bolide bolide)
+target_link_libraries(test_bolide bolide_lib)
 
 enable_testing()
 add_test(NAME bolide COMMAND test_bolide)
